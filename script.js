@@ -17,4 +17,18 @@ function getComputerChoice() {
   }
 }
 
-console.log(getComputerChoice());
+function getHumanChoice() {
+  // Get human choice from a prompt and store it in a variable
+  let humanChoice = prompt("Rock, paper or scissors?");
+  const formattedHumanChoice = humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1).toLowerCase();
+  // Check if user input is valid
+  const possibleInputs = ["Rock", "Paper", "Scissors"];
+  if (possibleInputs.includes(formattedHumanChoice)) {
+    return formattedHumanChoice;
+  } else {
+    console.log("Nope!");
+    return;
+  }
+}
+
+console.log(getHumanChoice());
