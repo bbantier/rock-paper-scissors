@@ -71,6 +71,7 @@ function playGame() {
   while (round <= 5);
   // Announce the winner and reset round number
   console.log(humanScore > computerScore ? "You win the game!" : (computerScore > humanScore ? "You lose the game..." : "It's a tie!"));
+  round = 1;
 }
 
 playGame();
