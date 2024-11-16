@@ -1,3 +1,8 @@
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
+const resultsDiv = document.querySelector("#results");
+
 function getComputerChoice() {
   // Generate a random number between 1 and 3 and store it in a variable
   let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -26,11 +31,21 @@ function playGame() {
   let humanScore = 0;
   let round = 1;
 
+  rockButton.addEventListener("click", () => {
+    playRound("rock", getComputerChoice());
+  })
+
+  paperButton.addEventListener("click", () => {
+    playRound("paper", getComputerChoice());
+  })
+
+  scissorsButton.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice());
+  })
+
   function playRound(humanChoice, computerChoice) {
-    // Gather human and computer choices
-    humanChoice = getHumanChoice().toLowerCase();
     computerChoice = getComputerChoice();
-    // Evaluate choices, pick a winner and update scores
+
     if (humanChoice === computerChoice) {
       console.log("It's a tie!");
     } else if (humanChoice === "rock") {
@@ -57,21 +72,11 @@ function playGame() {
         console.log("You lose! Rock beats scissors.");
         computerScore++;
       }
-    } else {
-      console.log("Nope!");
     }
+
     console.log("Player score: ", humanScore);
     console.log("Computer score", computerScore);
   }
-  // Play five rounds
-  do {
-    playRound();
-    round++;
-  }
-  while (round <= 5);
-  // Announce the winner and reset round number
-  console.log(humanScore > computerScore ? "You win the game!" : (computerScore > humanScore ? "You lose the game..." : "It's a tie!"));
-  round = 1;
 }
 
 playGame();
